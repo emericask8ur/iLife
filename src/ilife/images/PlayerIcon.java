@@ -17,6 +17,7 @@ public enum PlayerIcon {
     UPDOWN("iconsUp_Down.png"),
     Down("Down.png"),
     Market("Market.png"),
+    House("House.png"),
     COOK("Cook.png"); //Wait can I just add it like this
     private final String path;
     private Image image;

@@ -4,36 +4,27 @@
  */
 
 /*
- * Market.java
+ * House.java
  *
- * Created on Dec 30, 2011, 11:05:00 PM
+ * Created on Dec 31, 2011, 12:06:49 AM
  */
 package ilife;
 
 import ilife.images.PlayerIcon;
-import ilife.jobs.Job;
-import ilife.jobs.JobCashier;
 import java.awt.Graphics;
 
 /**
  *
  * @author beast
  */
-public class Market extends javax.swing.JPanel {
+public class House extends javax.swing.JPanel {
 
-    
-    
-    public Market() {
+    /** Creates new form House */
+    public House() {
         initComponents();
     }
-    
-    private Job job = new JobCashier();
-    public Job getJob() {
-        return this.job;
-    }
-    
-    
-    private PlayerIcon icon = PlayerIcon.Market;
+
+    private PlayerIcon icon = PlayerIcon.House;
     public void paint(Graphics g) {
         g.drawImage(this.icon.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     }
