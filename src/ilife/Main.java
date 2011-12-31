@@ -7,6 +7,9 @@
  * Main.java
  *
  * Created on Dec 30, 2011, 6:51:29 PM
+ * Created by Emericask8ur and Bergerkiller
+ * Commit 2
+ * Todo: Handle Market , Food Buying, Jobs.
  */
 package ilife;
 
@@ -18,6 +21,7 @@ public class Main extends javax.swing.JFrame implements KeyListener{
 
     public Main() {
         initComponents();
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,8 +31,16 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         jSeparator1 = new javax.swing.JSeparator();
         player = new ilife.Player();
         cook1 = new ilife.Cook();
+        HealthText = new javax.swing.JLabel();
+        HealthInt = new javax.swing.JLabel();
+        FunText = new javax.swing.JLabel();
+        FunInt = new javax.swing.JLabel();
+        SleepText = new javax.swing.JLabel();
+        SleepInt = new javax.swing.JLabel();
+        Market = new ilife.Market();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 254, 254));
 
         javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
         player.setLayout(playerLayout);
@@ -52,30 +64,90 @@ public class Main extends javax.swing.JFrame implements KeyListener{
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        HealthText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HealthText.setText("Health:");
+
+        HealthInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HealthInt.setText("100");
+
+        FunText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        FunText.setText("Fun:");
+
+        FunInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        FunInt.setText("100");
+
+        SleepText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        SleepText.setText("Energy:");
+
+        SleepInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        SleepInt.setText("100");
+
+        javax.swing.GroupLayout MarketLayout = new javax.swing.GroupLayout(Market);
+        Market.setLayout(MarketLayout);
+        MarketLayout.setHorizontalGroup(
+            MarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 167, Short.MAX_VALUE)
+        );
+        MarketLayout.setVerticalGroup(
+            MarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 167, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(447, 447, 447))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HealthText)
+                            .addComponent(FunText))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(FunInt)
+                            .addComponent(HealthInt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(SleepText)
+                        .addGap(18, 18, 18)
+                        .addComponent(SleepInt)))
+                .addContainerGap(963, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(627, Short.MAX_VALUE)
+                .addContainerGap(619, Short.MAX_VALUE)
+                .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(376, 376, 376))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Market, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 804, Short.MAX_VALUE)
                 .addComponent(cook1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(cook1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Market, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cook1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(189, 189, 189)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(HealthText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HealthInt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FunText)
+                    .addComponent(FunInt))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SleepText)
+                    .addComponent(SleepInt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         player.addKeyListener(this);
@@ -121,6 +193,13 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FunInt;
+    private javax.swing.JLabel FunText;
+    private javax.swing.JLabel HealthInt;
+    private javax.swing.JLabel HealthText;
+    private ilife.Market Market;
+    private javax.swing.JLabel SleepInt;
+    private javax.swing.JLabel SleepText;
     private ilife.Cook cook1;
     private javax.swing.JSeparator jSeparator1;
     private ilife.Player player;
@@ -143,12 +222,26 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         } else if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
             player.moveRight(speed);
         }
-        if (player.collides(cook1)) {
-            if (e.getKeyCode()==KeyEvent.VK_SPACE) {
-                JOptionPane.showMessageDialog(null, "Yes!");
-            }
+        //Debug
+        if(e.getKeyCode()==KeyEvent.VK_F6){
+            System.out.println("Debug 1: " + player.getLocation());
+        }//End 
+        //Interactions
+         if(player.collides(jSeparator1)){
+            int sub = player.getLocation().x - 1;
+              int suby = player.getLocation().y - 1;
+            player.setLocation(sub, 405);
+        }
+        if (player.collides(cook1)){
+           if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                //Todo: Handle Food Store
+          }
+        }
+        if(player.collides(Market)){
+            //ToDo: Handle Market Jobs
         }
     }
+    
     @Override
     public void keyReleased(KeyEvent e) {
         

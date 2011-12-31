@@ -64,9 +64,10 @@ public class Player extends javax.swing.JPanel {
         this.setY(this.getY() - offset);
     }
     public void moveDown(int offset) {
-        this.setIcon(PlayerIcon.UPDOWN);
+        this.setIcon(PlayerIcon.Down);
         this.setY(this.getY() + offset); //So Slow 
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

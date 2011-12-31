@@ -9,17 +9,19 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author beast
+ * @author emericask8ur
  */
 public enum PlayerIcon {
     LEFT("iconLeft.png"),
     RIGHT("iconsRight.png"),
     UPDOWN("iconsUp_Down.png"),
+    Down("Down.png"),
+    Market("Market.png"),
     COOK("Cook.png"); //Wait can I just add it like this
     private final String path;
     private Image image;
     private PlayerIcon(final String path) {
-        this.path = path;
+            this.path = path;
     }
     public Image getImage() {
         if (this.image == null) {
