@@ -2,14 +2,10 @@
 package ilife.jobs;
 
 import ilife.Player;
-import ilife.sounds.Sound;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author beast
- */
-public class JobCashier extends Job {
+
+public class JobNurse extends Job{
 
     @Override
     public void doJob(Player player) {
@@ -19,12 +15,12 @@ public class JobCashier extends Job {
 
     @Override
     public int getWage() {
-        return 17;
+        return 25;
     }
     
     @Override
     public String getName() {
-        return "Cashier";
+        return "Nurse";
     }
     
 }

@@ -4,24 +4,15 @@
  *
  * Created on Dec 30, 2011, 6:51:29 PM
  * Created by Emericask8ur and Bergerkiller
- * Commit 3
+ * Commit 4
  * Todo: Handle More Jobs, Foods. New Buildings, Health
  */
 package ilife;
 
-import ilife.jobs.Job;
 import ilife.sounds.Sound;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.net.URL;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
 
 public class Main extends javax.swing.JFrame implements KeyListener{
     int click = 0;
@@ -56,6 +47,7 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         MoneyInt = new javax.swing.JLabel();
         JobLoc = new javax.swing.JLabel();
         LocInt = new javax.swing.JLabel();
+        hospital1 = new ilife.Hospital();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 254, 254));
@@ -74,7 +66,7 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         HealthText.setFont(new java.awt.Font("Tahoma", 0, 18));
         HealthText.setText("Health:");
 
-        HealthInt.setFont(new java.awt.Font("Tahoma", 0, 18));
+        HealthInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HealthInt.setText("100");
 
         FunText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -83,10 +75,10 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         FunInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         FunInt.setText("100");
 
-        SleepText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        SleepText.setFont(new java.awt.Font("Tahoma", 0, 18));
         SleepText.setText("Energy:");
 
-        SleepInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        SleepInt.setFont(new java.awt.Font("Tahoma", 0, 18));
         SleepInt.setText("100");
 
         javax.swing.GroupLayout MarketLayout = new javax.swing.GroupLayout(Market);
@@ -100,21 +92,21 @@ public class Main extends javax.swing.JFrame implements KeyListener{
             .addGap(0, 167, Short.MAX_VALUE)
         );
 
-        BuyFoodText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BuyFoodText.setFont(new java.awt.Font("Tahoma", 0, 12));
         BuyFoodText.setText("Buy Food");
 
-        JobText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        JobText.setFont(new java.awt.Font("Tahoma", 0, 18));
         JobText.setText("Job:");
 
-        JobInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        JobInt.setFont(new java.awt.Font("Tahoma", 0, 18));
         JobInt.setText("None");
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        DegreeText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DegreeText.setFont(new java.awt.Font("Tahoma", 0, 18));
         DegreeText.setText("Degree:");
 
-        DegreeInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DegreeInt.setFont(new java.awt.Font("Tahoma", 0, 18));
         DegreeInt.setText("None");
 
         javax.swing.GroupLayout HouseLayout = new javax.swing.GroupLayout(House);
@@ -139,18 +131,29 @@ public class Main extends javax.swing.JFrame implements KeyListener{
             .addGap(0, 85, Short.MAX_VALUE)
         );
 
-        MoneyText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        MoneyText.setFont(new java.awt.Font("Tahoma", 0, 18));
         MoneyText.setForeground(new java.awt.Color(0, 153, 51));
         MoneyText.setText("Money $");
 
-        MoneyInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        MoneyInt.setFont(new java.awt.Font("Tahoma", 0, 18));
         MoneyInt.setText("0");
 
-        JobLoc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        JobLoc.setFont(new java.awt.Font("Tahoma", 0, 18));
         JobLoc.setText("Job Location:");
 
-        LocInt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocInt.setFont(new java.awt.Font("Tahoma", 0, 18));
         LocInt.setText("None");
+
+        javax.swing.GroupLayout hospital1Layout = new javax.swing.GroupLayout(hospital1);
+        hospital1.setLayout(hospital1Layout);
+        hospital1Layout.setHorizontalGroup(
+            hospital1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        hospital1Layout.setVerticalGroup(
+            hospital1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 225, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,19 +162,19 @@ public class Main extends javax.swing.JFrame implements KeyListener{
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(HealthText)
-                        .addGap(22, 22, 22)
-                        .addComponent(HealthInt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(FunText)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(FunInt))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(SleepText)
                         .addGap(18, 18, 18)
-                        .addComponent(SleepInt)))
+                        .addComponent(SleepInt))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HealthText)
+                            .addComponent(FunText))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FunInt)
+                            .addComponent(HealthInt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(64, 64, 64)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -208,7 +211,8 @@ public class Main extends javax.swing.JFrame implements KeyListener{
                         .addComponent(BuyFoodText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(362, 362, 362)
+                .addComponent(hospital1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(262, 262, 262)
                 .addComponent(House, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,9 +240,9 @@ public class Main extends javax.swing.JFrame implements KeyListener{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(HealthText, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                                    .addComponent(HealthText, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                                     .addComponent(HealthInt))
-                                .addGap(32, 32, 32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(FunText)
                                     .addComponent(FunInt))
@@ -247,7 +251,7 @@ public class Main extends javax.swing.JFrame implements KeyListener{
                                     .addComponent(SleepText)
                                     .addComponent(SleepInt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(105, 105, 105))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -266,6 +270,10 @@ public class Main extends javax.swing.JFrame implements KeyListener{
                             .addComponent(MoneyText)
                             .addComponent(MoneyInt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(106, 106, 106))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(269, Short.MAX_VALUE)
+                .addComponent(hospital1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(318, 318, 318))
         );
 
         player.addKeyListener(this);
@@ -323,6 +331,7 @@ public class Main extends javax.swing.JFrame implements KeyListener{
     private javax.swing.JLabel SleepInt;
     private javax.swing.JLabel SleepText;
     private ilife.Cook cook1;
+    private ilife.Hospital hospital1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private ilife.Player player;
@@ -345,6 +354,10 @@ public class Main extends javax.swing.JFrame implements KeyListener{
         } else if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
             player.moveRight(speed);
         }
+        if(e.getKeyCode()== KeyEvent.VK_0){
+            click = 0;
+            DegreeInt.setText("Associate");
+        }
         //Interactions
          if(player.collides(jSeparator1)){
             int sub = player.getLocation().x - 1;
@@ -357,23 +370,66 @@ public class Main extends javax.swing.JFrame implements KeyListener{
             int setMoney = Integer.parseInt(money);
             //Food Money
             int $steak = setMoney - 12;
-            String type = JOptionPane.showInputDialog("Steak: $12 | Corn: $6 | Chicken: $7 | Cookie: $2 | Pork: $11");
-            if(type.equalsIgnoreCase("steak")){
+            int $corn = setMoney - 6;
+            int $chick = setMoney - 7;
+             int $cookie = setMoney - 2;
+             int $pork = setMoney - 11;
+            String type = JOptionPane.showInputDialog("Type What you Want to Buy: Steak: $12 | Corn: $6 | Chicken: $7 | Cookie: $2 | Pork: $11");
+            while(true){
+            if(type.equalsIgnoreCase("steak") && setMoney >= 12){
                 Sound.BURP.play();
-                //Decrease Money
+                MoneyInt.setText("" + $steak);
+                //Todo Handle Health
+            } else {
+                JOptionPane.showMessageDialog(null, "You cannot afford this Item!");
+                                                break;
             }
-            if(type.equalsIgnoreCase("corn")){
-    
+            if(type.equalsIgnoreCase("corn") && setMoney >= 6){
+                Sound.BURP.play();
+                MoneyInt.setText("" + $corn);
+                                //Todo Handle Health
+            } else {
+                JOptionPane.showMessageDialog(null, "You cannot afford this Item!");
+                                                break;
+                
+            }
+            if(type.equalsIgnoreCase("chicken") && setMoney >= 7){
+                Sound.BURP.play();
+                MoneyInt.setText( "" + $chick);
+                                //Todo Handle Health
+            } else {
+                JOptionPane.showMessageDialog(null, "You cannot afford this Item!");
+                                                break;
+            }
+            if(type.equalsIgnoreCase("cookie") && setMoney >= 2){
+                Sound.BURP.play();
+                MoneyInt.setText( "" + $cookie);
+                                //Todo Handle Health
+            } else {
+                JOptionPane.showMessageDialog(null, "You cannot afford this Item!");
+                                                break;
+            }
+            if(type.equalsIgnoreCase("pork") && setMoney >=11){
+                Sound.BURP.play();
+                MoneyInt.setText( "" + $pork);
+                                //Todo Handle Health
+            } else {
+                JOptionPane.showMessageDialog(null, "You cannot afford this Item!");
+                                                break;
+            }
             }
         }
         //Market
         if(player.collides(Market) && e.getKeyCode()==KeyEvent.VK_SPACE){
             if(!JobInt.getText().equalsIgnoreCase("Cashier")){
-            String input = JOptionPane.showInputDialog("Work as a Cashier for $17 a Day?");
+            String input = JOptionPane.showInputDialog("Work as a Cashier for $17 a Day? Yes/No");
             if(input.equalsIgnoreCase("yes")){
                 JOptionPane.showMessageDialog(null, "You got the job!");
                 JobInt.setText("Cashier");
             }//!JobInt
+            if(input.equalsIgnoreCase("no")){
+                
+            }
             }
             if(click==2){
                 JOptionPane.showMessageDialog(null, "You already worked today! Sleep!");
@@ -383,7 +439,36 @@ public class Main extends javax.swing.JFrame implements KeyListener{
             if(!(click==2) && JobInt.getText().equalsIgnoreCase("Cashier")){
                 Market.getJob().doJob(player);
             }
-    }
+        }//End Market
+        if(player.collides(hospital1) && e.getKeyCode()==KeyEvent.VK_SPACE){
+            if(!JobInt.getText().equalsIgnoreCase("Nurse")){
+                String input = JOptionPane.showInputDialog("Work as a Nurse for $25 a Day? Yes/No");
+                if(DegreeInt.getText().equals("Associate")){
+                    if(input.equalsIgnoreCase("yes")){
+                 JOptionPane.showMessageDialog(null, "You got the job!");
+                     JobInt.setText("Nurse");
+                    }
+                   if(input.equalsIgnoreCase("no") || input.equals(null)){
+                   }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You need a Associate Degree for this!");
+                 }
+                if(JobInt.getText().equals("Nurse") && !(click==2)){
+                    hospital1.getJob().doJob(player);
+                    Sound.Typing.play();
+                }
+               if(click==2){
+                JOptionPane.showMessageDialog(null, "You already worked today! Sleep!");
+            } else {
+                click++;
+            }
+            }
+        }//Jobs Hospital
+        if(player.collides(House) && e.getKeyCode()==KeyEvent.VK_SPACE){
+                        Sound.Bells.play();
+            click = 0;
+            Sound.Bells.play();
+        }
     }
     
     public void setDisplayMoney(String text) {

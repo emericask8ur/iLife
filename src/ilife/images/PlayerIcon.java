@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ilife.images;
 
 import java.awt.Image;
@@ -18,6 +15,8 @@ public enum PlayerIcon {
     Down("Down.png"),
     Market("Market.png"),
     House("House.png"),
+    Hospital("Hospital.png"),
+    Club("Club.png"),
     COOK("Cook.png"); //Wait can I just add it like this
     private final String path;
     private Image image;

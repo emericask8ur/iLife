@@ -2,23 +2,29 @@
 package ilife;
 
 import ilife.images.PlayerIcon;
+import ilife.jobs.Job;
+import ilife.jobs.JobNurse;
 import java.awt.Graphics;
 
 /**
  *
  * @author beast
  */
-public class House extends javax.swing.JPanel {
+public class Hospital extends javax.swing.JPanel {
 
-    /** Creates new form House */
-    public House() {
+    /** Creates new form Hospital */
+    public Hospital() {
         initComponents();
     }
-
-    private PlayerIcon icon = PlayerIcon.House;
+        private PlayerIcon icon = PlayerIcon.Hospital;
     public void paint(Graphics g) {
         g.drawImage(this.icon.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     }
+    private Job job = new JobNurse();
+    public Job getJob() {
+        return this.job;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

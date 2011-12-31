@@ -1,13 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * Market.java
- *
- * Created on Dec 30, 2011, 11:05:00 PM
- */
 package ilife;
 
 import ilife.images.PlayerIcon;

@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ilife.sounds;
 
 import java.io.IOException;
@@ -16,6 +13,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public enum Sound {
     BURP("Burp.wav"),
+    Typing("Typing.wav"),
+    Bells("Bells.wav"),
     DOOR("Door.wav");
     
     private final String path;
